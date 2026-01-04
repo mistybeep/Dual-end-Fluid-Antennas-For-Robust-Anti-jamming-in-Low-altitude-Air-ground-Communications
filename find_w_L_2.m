@@ -18,7 +18,7 @@ function w_L = find_w_L_2(H_G, H_L, H_LA, W_G, v_A, y, z, K, gamma, P, sigma2)
     % 收敛参数（可调）
     Imax = 500;
     eps_k = 1e-5;        % epsilon for convergence
-    step_a = 1; step_b = 0.5; step_c = 10.0;   % step size params: t_n = c/(a + b*n)
+    step_a = 1; step_b = 1; step_c = 1;   % step size params: t_n = c/(a + b*n)
 
     nu = zeros(K+1,1);    % nu(1)=nu0, nu(2..K+1)=nu1..nuK
     nu(1) = 1;
@@ -32,7 +32,7 @@ function w_L = find_w_L_2(H_G, H_L, H_LA, W_G, v_A, y, z, K, gamma, P, sigma2)
     u = U_A(:, idx_max);  % 主特征向量（列）
     u = u / norm(u);      % 单位化
     w_L = sqrt(P) * Phi_inv_sqrt * u;
-    
+    % 
     overlineP = P + sum(tildeR);
     flag = 1;
     for k = 1 : K
