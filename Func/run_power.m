@@ -2,7 +2,7 @@
 rng(42)
 clear all;
 close all;
-addpath("F:\A-PhD-Data\PHD-25-Aut\New\Fluid Antenna DBS\开源")
+addpath("")
 num_simulations = 100; % 仿真次数
 Pow_values = 0:2:20; % P_dBm从10到30，间隔2dB
 num_Pow_values = length(Pow_values);
