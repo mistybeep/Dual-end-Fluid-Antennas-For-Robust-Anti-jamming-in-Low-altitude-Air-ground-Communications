@@ -2,7 +2,7 @@
 rng(42)
 clear all;
 close all;
-addpath("") % 自己的文件位置
+addpath("")
 num_simulations = 100; % 仿真次数
 norm_A_values = 2:0.5:7; % P_dBm从10到30，间隔2dB
 num_norm_A_values = length(norm_A_values);
@@ -38,20 +38,13 @@ w_L = w_L * sqrt(10^(P_dBm / 10) * 1e-3) / norm(w_L, 2);
 v_A = randn(N_A, 1) + 1j*randn(N_A, 1);
 v_A = v_A / norm(v_A, 2);
 
-if isempty(gcp('nocreate'))
-    numWorkers = 20;
-    parpool('local', numWorkers);
-else
-    fprintf('并行池已存在，直接使用\n');
-end
-
 % 运行仿真
 tic
 for idx = 1:num_norm_A_values
     norm_A = norm_A_values(idx);
     fprintf('当前A = %d (%d/%d)\n', norm_A, idx, num_norm_A_values);
     
-    parfor sim = 1:num_simulations
+    for sim = 1:num_simulations
         fprintf('  运行仿真 %d/%d...\n', sim, num_simulations);
 
         ResultPerMA = PerfectDualEndMA(sim, data, norm_A, lambda, M, N_G, N_L, N_J, N_A, K, P_dBm, P_J_dBm, sigma2_dBm, gamma, err_range, alpha, rho_0_dB, Q, R, w_L, v_A, EpsKappa);

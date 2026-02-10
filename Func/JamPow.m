@@ -38,36 +38,29 @@ w_L = w_L * sqrt(10^(P_dBm / 10) * 1e-3) / norm(w_L, 2);
 v_A = randn(N_A, 1) + 1j*randn(N_A, 1);
 v_A = v_A / norm(v_A, 2);
 
-if isempty(gcp('nocreate'))
-    numWorkers = 20;
-    parpool('local', numWorkers);
-else
-    fprintf('并行池已存在，直接使用\n');
-end
-
 % 运行仿真
 tic
 for idx = 1:num_JamPow_values
     P_J_dBm = JamPow_values(idx);
     fprintf('当前P = %d (%d/%d)\n', P_J_dBm, idx, num_JamPow_values);
     
-    parfor sim = 1:num_simulations
+    for sim = 1:num_simulations
         fprintf('  运行仿真 %d/%d...\n', sim, num_simulations);
 
         ResultPerMA = PerfectDualEndMA(sim, data, norm_A, lambda, M, N_G, N_L, N_J, N_A, K, P_dBm, P_J_dBm, sigma2_dBm, gamma, err_range, alpha, rho_0_dB, Q, R, w_L, v_A, EpsKappa);
         RatesPerMA(sim, idx, :) = ResultPerMA;
 
-        ResultMA = DualEndMA(sim, data, norm_A, lambda, M, N_G, N_L, N_J, N_A, K, P_dBm, P_J_dBm, sigma2_dBm, gamma, err_range, alpha, rho_0_dB, Q, R, w_L, v_A, EpsKappa);
-        RatesMA(sim, idx, :) = ResultMA;
-
-        ResultRecMA = RecMA(sim, data, norm_A, lambda, M, N_G, N_L, N_J, N_A, K, P_dBm, P_J_dBm, sigma2_dBm, gamma, err_range, alpha, rho_0_dB, Q, R, w_L, v_A, EpsKappa);
-        RatesRecMA(sim, idx, :) = ResultRecMA;
-
-        ResultTransMA = TransMA(sim, data, norm_A, lambda, M, N_G, N_L, N_J, N_A, K, P_dBm, P_J_dBm, sigma2_dBm, gamma, err_range, alpha, rho_0_dB, Q, R, w_L, v_A, EpsKappa);
-        RatesTransMA(sim, idx, :) = ResultTransMA;
-
-        ResultFPA = FPA(sim, data, norm_A, lambda, M, N_G, N_L, N_J, N_A, K, P_dBm, P_J_dBm, sigma2_dBm, gamma, err_range, alpha, rho_0_dB, Q, R, w_L, v_A, EpsKappa);
-        RatesFPA(sim, idx, :) = ResultFPA;
+        % ResultMA = DualEndMA(sim, data, norm_A, lambda, M, N_G, N_L, N_J, N_A, K, P_dBm, P_J_dBm, sigma2_dBm, gamma, err_range, alpha, rho_0_dB, Q, R, w_L, v_A, EpsKappa);
+        % RatesMA(sim, idx, :) = ResultMA;
+        % 
+        % ResultRecMA = RecMA(sim, data, norm_A, lambda, M, N_G, N_L, N_J, N_A, K, P_dBm, P_J_dBm, sigma2_dBm, gamma, err_range, alpha, rho_0_dB, Q, R, w_L, v_A, EpsKappa);
+        % RatesRecMA(sim, idx, :) = ResultRecMA;
+        % 
+        % ResultTransMA = TransMA(sim, data, norm_A, lambda, M, N_G, N_L, N_J, N_A, K, P_dBm, P_J_dBm, sigma2_dBm, gamma, err_range, alpha, rho_0_dB, Q, R, w_L, v_A, EpsKappa);
+        % RatesTransMA(sim, idx, :) = ResultTransMA;
+        % 
+        % ResultFPA = FPA(sim, data, norm_A, lambda, M, N_G, N_L, N_J, N_A, K, P_dBm, P_J_dBm, sigma2_dBm, gamma, err_range, alpha, rho_0_dB, Q, R, w_L, v_A, EpsKappa);
+        % RatesFPA(sim, idx, :) = ResultFPA;
     end
 end
 toc
