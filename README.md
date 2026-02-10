@@ -41,7 +41,7 @@ If you use this code or our findings in your research, please cite our JSTSP 202
 
 ```bibtex
 @ARTICLE{DualEndFluidAntenna2026JSTSP,
-  author={Your Name and Co-authors},
+  author={Yifan Guo, Junshan Luo, Fanggang Wang, Haiyang Ding, Shilian Wang, and Zhenhai Xu},
   journal={IEEE Journal of Selected Topics in Signal Processing}, 
   title={Dual-end Fluid Antennas For Robust Anti-jamming in Low-altitude Air-ground Communications}, 
   year={2026},
