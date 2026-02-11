@@ -10,9 +10,9 @@ This repository contains the official MATLAB simulation code for the paper:
 In low-altitude Air-to-Ground (A2G) networks, communications are highly vulnerable to malicious jamming. This research proposes a **Dual-end Fluid Antenna (FA)** framework where antenna elements can freely move within a confined space at both the transmitter and the receiver. By optimizing the positions of these "fluid" elements, the system can autonomously navigate to spatial locations that maximize signal strength while nullifying interference.
 
 ### System Model
-<div style="text-align: center;">
-  <img src="https://youke.xn--y7xa690gmna.cn/s1/2026/02/10/698ad09c76048.webp" style="width: 50%;" alt="System Model">
-</div>
+<p align="center">
+  <img src="https://youke.xn--y7xa690gmna.cn/s1/2026/02/10/698ad09c76048.webp" width="50%" alt="System Model">
+</p>
 
 ---
 
