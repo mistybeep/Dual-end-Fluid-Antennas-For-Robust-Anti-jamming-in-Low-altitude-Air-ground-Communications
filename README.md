@@ -49,6 +49,6 @@ If you use this code or our findings in your research, please cite our JSTSP 202
   year={2026},
   volume={},
   number={},
-  pages={},
-  doi={10.1109/JSTSP.2026.xxxxxxx}
+  pages={1-16},
+  doi={10.1109/JSTSP.2026.3666647}
 }
