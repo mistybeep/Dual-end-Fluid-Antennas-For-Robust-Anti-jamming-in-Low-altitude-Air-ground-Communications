@@ -1,5 +1,9 @@
 # Dual-end Fluid Antennas For Robust Anti-jamming in Low-altitude Air-ground Communications
 
+[![MATLAB](https://img.shields.io/badge/MATLAB-R2023b-blue.svg)](https://www.mathworks.com/products/matlab.html)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Status: Core Algorithms Released](https://img.shields.io/badge/Status-Core_Algorithms_Released-orange.svg)](#)
+
 This repository contains the official MATLAB simulation code for the paper:  
 **"Dual-end Fluid Antennas For Robust Anti-jamming in Low-altitude Air-ground Communications"**, to be published in **IEEE Journal of Selected Topics in Signal Processing (JSTSP)**, 2026.
 
